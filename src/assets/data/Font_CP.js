@@ -1,0 +1,16 @@
+export default {
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "codi": "S2.03", "tipus_1": "Cp", "tipus_2": "C\/D", "fonts": "Catalino, font del", "altitud": 297.0, "x": 403375.0, "y": 4606779.0, "rest": "-", "us_1": "Dipòsit ADF", "us_2": null }, "geometry": { "type": "Point", "coordinates": [ 1.839323642506864, 41.605054269888839 ] } },
+{ "type": "Feature", "properties": { "codi": "S2.08f", "tipus_1": "Cp", "tipus_2": null, "fonts": "Valentina, font de la", "altitud": 155.0, "x": 403983.0, "y": 4607043.0, "rest": "R", "us_1": "Proveïment", "us_2": null }, "geometry": { "type": "Point", "coordinates": [ 1.846576226730652, 41.607505115260501 ] } },
+{ "type": "Feature", "properties": { "codi": "S3.09", "tipus_1": "Cp", "tipus_2": "C\/D", "fonts": "Pinyó, font del", "altitud": 333.0, "x": 402843.0, "y": 4607836.0, "rest": "M", "us_1": "Proveïment", "us_2": "reg" }, "geometry": { "type": "Point", "coordinates": [ 1.832769007164134, 41.614508266469151 ] } },
+{ "type": "Feature", "properties": { "codi": "S3.14", "tipus_1": "Cp", "tipus_2": null, "fonts": "Tres, font dels", "altitud": 535.0, "x": 401347.0, "y": 4607703.0, "rest": "-", "us_1": "Proveïment", "us_2": null }, "geometry": { "type": "Point", "coordinates": [ 1.814839100006452, 41.613126869576952 ] } },
+{ "type": "Feature", "properties": { "codi": "S3.19f", "tipus_1": "Cp", "tipus_2": "C\/D", "fonts": "Domingo, font de cal", "altitud": 227.0, "x": 401651.0, "y": 4611799.0, "rest": "-", "us_1": "Proveïment", "us_2": null }, "geometry": { "type": "Point", "coordinates": [ 1.817813152731855, 41.65004988717552 ] } },
+{ "type": "Feature", "properties": { "codi": "S4.03", "tipus_1": "Cp", "tipus_2": null, "fonts": "Albes, font de les", "altitud": 695.0, "x": 400720.0, "y": 4607303.0, "rest": "-", "us_1": "Proveïment", "us_2": "reg" }, "geometry": { "type": "Point", "coordinates": [ 1.807381716079701, 41.609446953731116 ] } },
+{ "type": "Feature", "properties": { "codi": "S4.06", "tipus_1": "Cp", "tipus_2": null, "fonts": "Martorell, font de can", "altitud": 488.0, "x": 400540.0, "y": 4608279.0, "rest": "-", "us_1": "Proveïment", "us_2": null }, "geometry": { "type": "Point", "coordinates": [ 1.805059688242675, 41.618213624668471 ] } },
+{ "type": "Feature", "properties": { "codi": "S4.07", "tipus_1": "Cp", "tipus_2": null, "fonts": "Mina, font de la", "altitud": 610.0, "x": 400544.0, "y": 4607574.0, "rest": "-", "us_1": "Proveïment", "us_2": "reg" }, "geometry": { "type": "Point", "coordinates": [ 1.805224875614275, 41.611865441019404 ] } },
+{ "type": "Feature", "properties": { "codi": "S5.06", "tipus_1": "Cp", "tipus_2": null, "fonts": "Forat, font del", "altitud": 615.0, "x": 399088.0, "y": 4607989.0, "rest": "R", "us_1": "Proveïment", "us_2": null }, "geometry": { "type": "Point", "coordinates": [ 1.787683937915832, 41.615419659667602 ] } },
+{ "type": "Feature", "properties": { "codi": "S5.08f", "tipus_1": "Cp", "tipus_2": null, "fonts": "Jaia, font de la", "altitud": 334.0, "x": 398740.0, "y": 4610801.0, "rest": "-", "us_1": "Proveïment", "us_2": null }, "geometry": { "type": "Point", "coordinates": [ 1.783031778142935, 41.640697966942291 ] } }
+]
+}
