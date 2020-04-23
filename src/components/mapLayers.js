@@ -154,10 +154,12 @@ function addMapLayersEvent(map) {
 
     addEventToLayers(map, "mouseenter", ["regulacio-geojson-polygon", "camins-geojson-LineString"], popup, function(e, popup) {
         addPointer(map);
-        var description = e.features[0].properties;
-        var coordinates = getEventCoords(e);
+        var html = [];
+        e.features.forEach((feature) => {
+            html.push(`<h5>${feature.properties.Nom}</h5>`);
+        });
         popup.setLngLat(e.lngLat)
-            .setHTML(`<h5>${description.Nom}</h5>`)
+            .setHTML(html.join(""))
             .addTo(map);
     });
 
@@ -167,7 +169,6 @@ function addMapLayersEvent(map) {
     });
 
     addEventToLayers(map, "mouseenter", ["camins-geojson-LineString"], popup, function(e, popup) {
-        console.log(e);
         e.features.forEach((feature) => {
             featuresId.push(feature.id);
             map.setFeatureState(
