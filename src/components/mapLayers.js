@@ -11,6 +11,7 @@ import styles from "../assets/data/styles";
 import images from "../assets/data/images";
 
 const featuresId = [];
+let featuresSelected = [];
 
 function addSources(map) {
     if (map.isStyleLoaded()) {
@@ -132,56 +133,97 @@ function addMapLayersEvent(map) {
             .addTo(map);
     });
 
-    addEventToLayers(map, "mouseleave", ["aparcaments-point", "Ermites", "Capella"], popup, function(e, popup) {
+    addEventToLayers(map, "mouseleave", ["aparcaments-point", "Ermites", "Capella", "PuntsInteres", "Font_B", "Font_C_D", "Font_CP", "Font_DGT", "Font_M", "Font_R", "Font_R_X", "dea", "Coves", "refugis", "ZonaAcampada"], popup, function(e, popup) {
         removePointer(map);
         popup.remove();
     });
 
-    addEventToLayers(map, "mouseenter", ["Ermites", "Capella"], popup, function(e, popup) {
+    addEventToLayers(map, "mouseenter", ["Ermites", "Capella", "PuntsInteres"], popup, function(e, popup) {
         addPointer(map);
         var description = e.features[0].properties;
         var coordinates = getEventCoords(e);
         var html = "";
-        if (description.nom && description.text){
-            html = `<h5>${description.nom}</h5>${description.text}`;
-        } else {
+        if (description.image && description.nom && description.text){
+            html = `<img src= "${description.image}"><h5 style="text-align:center">${description.nom}</h5>${description.text}`;
+        }
+        else if (description.image && description.nom){
+            html = `<img src= "${description.image}"><h5 style="text-align:center">${description.nom}</h5>`;
+        }
+        else if (description.nom && description.text ){
+            html = `<h5 style="text-align:center">${description.nom}</h5>${description.text}`;
+        }
+        else {
             html = `<h5>${description.nom}</h5>`;
+        }
+        popup.setLngLat(coordinates)
+            .setHTML(html)
+            .setMaxWidth("260px")
+            .addTo(map);
+    });
+
+    addEventToLayers(map, "mouseenter", ["Font_B","Font_C_D","Font_CP","Font_DGT","Font_M","Font_R","Font_R_X",], popup, function(e, popup) {
+        addPointer(map);
+        var description = e.features[0].properties;
+        var coordinates = getEventCoords(e);
+        popup.setLngLat(coordinates)
+            .setHTML(`<h5>${description.fonts}</h5>Ús: ${description.us_1}`)						   
+            .addTo(map);
+    });
+
+    addEventToLayers(map, "mouseenter", ["dea", "Coves", "refugis", "ZonaAcampada"], popup, function(e, popup) {
+        addPointer(map);
+        var description = e.features[0].properties;
+        var coordinates = getEventCoords(e);
+        var html = "";
+        if (description.Nom && description.Observ){
+            html = `<h5>${description.Nom}</h5>${description.Observ}`;
+        } else {
+            html = `<h5>${description.Nom}</h5>`;
         }
         popup.setLngLat(coordinates)
             .setHTML(html)
             .addTo(map);
     });
 
-    addEventToLayers(map, "mouseenter", ["regulacio-geojson-polygon", "camins-geojson-LineString"], popup, function(e, popup) {
+    addEventToLayers(map, "mouseenter", ["regulacio-geojson-polygon", "camins-geojson-LineString", "GR_PR_PNMM"], popup, function(e, popup) {
         addPointer(map);
         var html = [];
         e.features.forEach((feature) => {
-            html.push(`<h5>${feature.properties.Nom}</h5>`);
+            const hasSelected = featuresSelected.some((element) => {
+                return (element.id === feature.id && element.source === feature.source);
+            });
+            if (!hasSelected){
+                featuresSelected.push(feature);
+            }
+        });
+        featuresSelected.forEach((feature) => {
+            html.push(`<p>${feature.properties.Nom}</p>`);
         });
         popup.setLngLat(e.lngLat)
             .setHTML(html.join(""))
             .addTo(map);
     });
 
-    addEventToLayers(map, "mouseleave", ["regulacio-geojson-polygon", "camins-geojson-LineString"], popup, function(e, popup) {
+    addEventToLayers(map, "mouseleave", ["regulacio-geojson-polygon", "camins-geojson-LineString", "GR_PR_PNMM"], popup, function(e, popup) {
         removePointer(map);
+        featuresSelected = [];
         popup.remove();
     });
 
-    addEventToLayers(map, "mouseenter", ["camins-geojson-LineString"], popup, function(e, popup) {
+    addEventToLayers(map, "mouseenter", ["camins-geojson-LineString", "GR_PR_PNMM"], popup, function(e, popup) {
         e.features.forEach((feature) => {
-            featuresId.push(feature.id);
+            featuresId.push(feature);
             map.setFeatureState(
-                { source: "camins-json", id: feature.id },
+                { source: feature.source, id: feature.id },
                 { hover: true }
             );
         });
     });
 
-    addEventToLayers(map, "mouseleave", ["camins-geojson-LineString"], popup, function(e, popup) {
-        featuresId.forEach((id) => {
+    addEventToLayers(map, "mouseleave", ["camins-geojson-LineString", "GR_PR_PNMM"], popup, function(e, popup) {
+        featuresId.forEach((feature) => {
             map.setFeatureState(
-                { source: "camins-json", id: id },
+                { source: feature.source, id: feature.id },
                 { hover: false }
             );
         });
@@ -193,12 +235,13 @@ function addMapLayersEvent(map) {
         const tolerance = 3;
         var bbox = [[e.point.x - tolerance, e.point.y - tolerance], [e.point.x + tolerance, e.point.y + tolerance]];
 
-        var features = map.queryRenderedFeatures(bbox, { layers: ['camins-geojson-LineString'] });
-        var features2 = map.queryRenderedFeatures(e.point, { layers: ["regulacio-geojson-polygon",] });
+        var features = map.queryRenderedFeatures(bbox, { layers: ['camins-geojson-LineString',"GR_PR_PNMM"] });
+        var features2 = map.queryRenderedFeatures(e.point, { layers: ["regulacio-geojson-polygon"] });
 
         // if the features have no info, return nothing
         if (features2.length) {
 
+            popup.remove();
             var feature2 = features2[0];
 
             $('.ui.modal').find("img.image").attr("src", feature2.properties['image']);
@@ -219,14 +262,22 @@ function addMapLayersEvent(map) {
 
         } else if (features.length) {
 
-            var p = features[0].properties;
-            if (p.url === "none") {
-                return false;
+            var html = [];
+            features.forEach((feature) => {
+                if(feature.properties.url !== "none"){
+                    html.push(`<p>Itinerari: <a href="${feature.properties.url}" target="_blank">${feature.properties.Nom}</a></p>`);
+                }
+                
+            });
+            if (html.length === 0) {
+                return;
             }
 
+            popup.remove();
+            
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
-                .setHTML(`<p>Itinerari: <a href="${p.url}" target="_blank">${p.Nom}</a></p>`)
+                .setHTML(html.join(""))
                 .addTo(map);
 
         } else {

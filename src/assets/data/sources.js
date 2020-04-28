@@ -3,11 +3,7 @@ import regulacio from "./regulacio";
 import regulacio_point from "./regulacio_point";
 import limitsparc from "./limitsparc";
 import limitsparc_point from "./limitsparc_point";
-import seccions from "./seccions";
-import seccions_point from "./seccions_point";
 import caminsPNMM from "./caminsPNMM";
-import regions from "./regions";
-import regions_point from "./regions_point";
 import fitxes_foer from "./fitxes_foer";
 import senyal_112 from "./senyal_112";
 import boixar from "./boixar";
@@ -24,6 +20,14 @@ import Font_R from "./Font_R";
 import Font_R_X from "./Font_R_X";
 import Ermites from "./Ermites";
 import Capella from "./Capella";
+import dea from "./dea";
+import Coves from "./Coves";
+import refugis from "./refugis";
+import ZonaAcampada from "./ZonaAcampada";
+import PuntsInteres from "./PuntsInteres";
+import GR_PR_PNMM from "./GR_PR_PNMM";
+
+
 
 export default {
     "agulles-point": {"type": "geojson","data": agulles, "generateId": true},
@@ -31,11 +35,7 @@ export default {
     "regulacio-point": {"type": "geojson","data": regulacio_point, "generateId": true},
     "limits-json": {"type": "geojson","data": limitsparc, "generateId": true},
     "limits-point": {"type": "geojson","data": limitsparc_point, "generateId": true},
-    "seccions-json": {"type": "geojson","data": seccions, "generateId": true},
-    "seccions-point": {"type": "geojson","data": seccions_point, "generateId": true},
     "camins-json": {"type": "geojson","data": caminsPNMM, "generateId": true},
-    "regions-json": {"type": "geojson","data": regions, "generateId": true},
-    "regions-point": {"type": "geojson","data": regions_point, "generateId": true},
     "foer-point": {"type": "geojson","data": fitxes_foer, "generateId": true},
     "112-point": {"type": "geojson","data": senyal_112, "generateId": true},
     "boixar-point": {"type": "geojson","data": boixar, "generateId": true},
@@ -52,4 +52,11 @@ export default {
     "Font_R_X": {"type": "geojson","data": Font_R_X, "generateId": true},
     "Ermites": {"type": "geojson","data": Ermites, "generateId": true},
     "Capella": {"type": "geojson","data": Capella, "generateId": true},
+    "dea": {"type": "geojson","data": dea, "generateId": true},
+    "Coves": {"type": "geojson","data": Coves, "generateId": true},
+    "refugis": {"type": "geojson","data": refugis, "generateId": true},
+    "ZonaAcampada": {"type": "geojson","data": ZonaAcampada, "generateId": true},
+    "PuntsInteres": {"type": "geojson","data": PuntsInteres, "generateId": true},
+    "GR_PR_PNMM": {"type": "geojson","data": GR_PR_PNMM, "generateId": true},
+        
 }

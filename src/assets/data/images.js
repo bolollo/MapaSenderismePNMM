@@ -11,6 +11,11 @@ import Font_6 from "../images/Font_6.png";
 import Font_7 from "../images/Font_7.png";
 import Ermita from "../images/Ermita.png";
 import Capella from "../images/Capella.png";
+import DEA from "../images/DEA.png";
+import Cova from "../images/Cova.png";
+import Tenda from "../images/Tenda.png";
+import Refugi from "../images/Refugi.png";
+import PuntInteres from "../images/PuntInteres.png";
 
 export default {
 	mountain: mountain,
@@ -26,4 +31,9 @@ export default {
     Font_7: Font_7,
     Ermita: Ermita,
     Capella: Capella,
+    DEA: DEA,
+    Cova: Cova,
+    Refugi: Refugi,
+    Tenda: Tenda,
+    PuntInteres: PuntInteres,   
 }

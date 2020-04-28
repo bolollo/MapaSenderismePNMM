@@ -112,7 +112,7 @@ export default [
                 "#223b53",
                 "Bruc",
                 "#b16618",
-                "Collbato",
+                "Collbató",
                 "#7685bc",
                 "Marganell",
                 "#207969",
@@ -125,59 +125,21 @@ export default [
         },
         filter: ["==", "$type", "LineString"]
     },
-    {
-        id: "regions-polygon",
+      {
+        id: "GR_PR_PNMM",
         type: "line",
-        source: "regions-json",
+        source: "GR_PR_PNMM",
         layout: { visibility: "none", "line-join": "round", "line-cap": "round" },
-        paint: { "line-color": "#a90230", "line-width": 2 },
-        filter: ["==", "$type", "Polygon"]
-    },
-    {
-        id: "regions-point",
-        type: "symbol",
-        source: "regions-point",
-        layout: {
-            visibility: "none",
-            "text-font": ["Open Sans Regular"],
-            "text-field": "{nom_regio}",
-            "text-allow-overlap": true,
-            "symbol-placement": "point",
-            "text-size": 14
-        },
         paint: {
-            "text-color": "#000000",
-            "text-halo-color": "#fff",
-            "text-halo-width": 1.5
+            "line-width": [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                6,
+                3
+            ],
+            "line-color": "#223b53",
         },
-        filter: ["==", "$type", "Point"]
-    },
-    {
-        id: "seccions-polygon",
-        type: "line",
-        source: "seccions-json",
-        layout: { visibility: "none", "line-join": "round", "line-cap": "round" },
-        paint: { "line-color": "#a90230", "line-width": 2 },
-        filter: ["==", "$type", "Polygon"]
-    },
-    {
-        id: "seccions-point",
-        type: "symbol",
-        source: "seccions-point",
-        layout: {
-            visibility: "none",
-            "text-font": ["Open Sans Regular"],
-            "text-field": "{nom_secc}",
-            "text-allow-overlap": true,
-            "symbol-placement": "point",
-            "text-size": 14
-        },
-        paint: {
-            "text-color": "#000000",
-            "text-halo-color": "#fff",
-            "text-halo-width": 1.5
-        },
-        filter: ["==", "$type", "Point"]
+        filter: ["==", "$type", "LineString"]
     },
     {
         id: "limits-geojson-polygon",
@@ -365,8 +327,6 @@ export default [
         type: "symbol",
         source: "Font_B",
         layout: {
-            "text-font": ["Open Sans Regular"],
-            "text-field": "{fonts}" + "\n" + "Ús:" + " " + "{us_1}",
             "symbol-placement": "point",
             "text-size": 12,
             "text-offset": [0, 2],
@@ -387,8 +347,6 @@ export default [
         type: "symbol",
         source: "Font_C_D",
         layout: {
-            "text-font": ["Open Sans Regular"],
-            "text-field": "{fonts}" + "\n" + "Ús:" + " " + "{us_1}",
             "symbol-placement": "point",
             "text-size": 12,
             "text-offset": [0, 2],
@@ -409,8 +367,6 @@ export default [
         type: "symbol",
         source: "Font_CP",
         layout: {
-            "text-font": ["Open Sans Regular"],
-            "text-field": "{fonts}" + "\n" + "Ús:" + " " + "{us_1}",
             "symbol-placement": "point",
             "text-size": 12,
             "text-offset": [0, 2],
@@ -431,8 +387,6 @@ export default [
         type: "symbol",
         source: "Font_DGT",
         layout: {
-            "text-font": ["Open Sans Regular"],
-            "text-field": "{fonts}" + "\n" + "Ús:" + " " + "{us_1}",
             "symbol-placement": "point",
             "text-size": 12,
             "text-offset": [0, 2],
@@ -453,8 +407,6 @@ export default [
         type: "symbol",
         source: "Font_M",
         layout: {
-            "text-font": ["Open Sans Regular"],
-            "text-field": "{fonts}" + "\n" + "Ús:" + " " + "{us_1}",
             "symbol-placement": "point",
             "text-size": 12,
             "text-offset": [0, 2],
@@ -475,8 +427,6 @@ export default [
         type: "symbol",
         source: "Font_R",
         layout: {
-            "text-font": ["Open Sans Regular"],
-            "text-field": "{fonts}" + "\n" + "Ús:" + " " + "{us_1}",
             "symbol-placement": "point",
             "text-size": 12,
             "text-offset": [0, 2],
@@ -497,8 +447,6 @@ export default [
         type: "symbol",
         source: "Font_R_X",
         layout: {
-            "text-font": ["Open Sans Regular"],
-            "text-field": "{fonts}" + "\n" + "Ús:" + " " + "{us_1}",
             "symbol-placement": "point",
             "text-size": 12,
             "text-offset": [0, 2],
@@ -549,5 +497,95 @@ export default [
             "text-halo-width": 1.5
         },
         filter: ["==", "$type", "Point"]
-    }
+    },
+     {
+         id: "dea",
+        type: "symbol",
+        source: "dea",
+        layout: {
+            "symbol-placement": "point",
+            "icon-image": "DEA",
+            "icon-size": 0.7,
+            "icon-allow-overlap": false,
+            visibility: "none"
+        },
+        paint: {
+            "text-color": "#000000",
+            "text-halo-color": "#fff",
+            "text-halo-width": 1.5
+        },
+        filter: ["==", "$type", "Point"]
+    },
+     {
+         id: "Coves",
+        type: "symbol",
+        source: "Coves",
+        layout: {
+            "symbol-placement": "point",
+            "icon-image": "Cova",
+            "icon-size": 0.7,
+            "icon-allow-overlap": false,
+            visibility: "none"
+        },
+        paint: {
+            "text-color": "#000000",
+            "text-halo-color": "#fff",
+            "text-halo-width": 1.5
+        },
+        filter: ["==", "$type", "Point"]
+    },
+     {
+         id: "refugis",
+        type: "symbol",
+        source: "refugis",
+        layout: {
+            "symbol-placement": "point",
+            "icon-image": "Refugi",
+            "icon-size": 0.7,
+            "icon-allow-overlap": false,
+            visibility: "none"
+        },
+        paint: {
+            "text-color": "#000000",
+            "text-halo-color": "#fff",
+            "text-halo-width": 1.5
+        },
+        filter: ["==", "$type", "Point"]
+    },
+     {
+         id: "ZonaAcampada",
+        type: "symbol",
+        source: "ZonaAcampada",
+        layout: {
+            "symbol-placement": "point",
+            "icon-image": "Tenda",
+            "icon-size": 0.7,
+            "icon-allow-overlap": false,
+            visibility: "none"
+        },
+        paint: {
+            "text-color": "#000000",
+            "text-halo-color": "#fff",
+            "text-halo-width": 1.5
+        },
+        filter: ["==", "$type", "Point"]
+    },
+    {
+        id: "PuntsInteres",
+        type: "symbol",
+        source: "PuntsInteres",
+        layout: {
+            "symbol-placement": "point",
+            "icon-image": "PuntInteres",
+            "icon-size": 0.7,
+            "icon-allow-overlap": false,
+            visibility: "none"
+        },
+        paint: {
+            "text-color": "#000000",
+            "text-halo-color": "#fff",
+            "text-halo-width": 1.5
+        },
+        filter: ["==", "$type", "Point"]
+    },
 ];
