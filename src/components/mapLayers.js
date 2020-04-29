@@ -197,7 +197,13 @@ function addMapLayersEvent(map) {
             }
         });
         featuresSelected.forEach((feature) => {
-            html.push(`<p>${feature.properties.Nom}</p>`);
+            
+            if(feature.properties.Longitud){
+                html.push(`<p>${feature.properties.Nom}<br/><small>Distància: ${feature.properties.Longitud}</small></p>`);
+            }else{
+                html.push(`<p>${feature.properties.Nom}</p>`);
+            }
+            
         });
         popup.setLngLat(e.lngLat)
             .setHTML(html.join(""))
@@ -246,19 +252,6 @@ function addMapLayersEvent(map) {
 
             $('.ui.modal').find("img.image").attr("src", feature2.properties['image']);
             $('.ui.modal').modal('show');
-
-            /*
-			// Populate the popup and set its coordinates
-			// based on the feature found
-			new mapboxgl.Popup()
-			.setLngLat(e.lngLat)
-			.setHTML(`<img src="${feature2.properties['image']}" style="max-width:500px;"></img>
-					<p>${feature2.properties['Regulacio']}</p>
-					<b>Plànol del sector: </b>  
-					<br><b><a href="${feature2.properties['file']}" target="_blank">${feature2.properties['Nom']}</a> (PDF) </b> 
-					`)
-			.addTo(map);
-			*/
 
         } else if (features.length) {
 
